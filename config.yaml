@@ -1,0 +1,25 @@
+---
+  languageCode: "zh-cn"
+  metaDataFormat: "yaml"
+  contentdir: "content"
+  layoutdir: "layouts"
+  publishdir: "public"
+  builddrafts: false
+  baseurl: "https://xiaolong2009.github.io/"
+  canonifyurls: true
+  permalinks:
+    post: ":year/:month/:day/:title/"
+    fixed: ":title/"
+  pygmentsuseclasses: true
+  PygmentsCodeFences: true
+  paginate: 5
+  rssuri: "feed.xml"
+  taxonomies:
+    tag: "tags"
+  params:
+    Title: "V2GO"
+    Tagline: "Way to Coding"
+    Author: "Xiaolong"
+    DateForm: "Jan 2 2006"
+    Github: "https://github.com/xiaolong2009"
+    duoshuoShortname: "Xiaolong"
