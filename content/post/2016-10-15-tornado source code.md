@@ -6,12 +6,13 @@ tags: ["tornado"]
 
 tornado 即是一个高性能的web server，又是一个web framwork，而且web server 采用的是asynchronous IO的网络模型，是一种很高效的模型，那tornado是怎么完成这些工作的，带着疑问我看了一下tornado的2.0版本的源码
 
-在看tornado的源码之前还有些准备工作要做  
-1. IO多路复用-epoll   
+在看tornado的源码之前还有些准备工作要做
+
+1. IO多路复用-epoll
 https://fukun.org/archives/10051470.html  
 https://www.zhihu.com/question/32163005
 
-2. Reactor模型  
+2. Reactor模型
 http://blog.csdn.net/u013074465/article/details/46276967
 
 tornado核心的几个部分如下
@@ -29,6 +30,7 @@ I/O loop，循环取出可用的 fd，并调用对应的事件处理函数。
 
 - RequestHandler
 处理请求，支持 GET/POST 等操作。
+<!--more-->
 # ioloop.py
 ioloop.py是典型的Reactor模型的实现，主要要看一下它的start方法里的核心调度过程。IOLoop 实例对象调用start后开始 epoll事件循环机制，该方法会一直运行直到 IOLoop 对象调用 stop 函数、当前所有事件循环完成。  
 
@@ -300,11 +302,11 @@ class HTTPConnection(object):
                 else:
                     logging.warning("Invalid multipart/form-data")
         # 调用application， 并把request作为参数传递，_request中已包含 Http Request中的所有信息
-        # 调用Application的__call__方法
+        # 调用Application的`__call__`方法
         self.request_callback(self._request)
 ```
 # web.py
-HTTPConnection在_on_request_body方法中调用到了Application的__call__方法，__call__方法中会匹配url，并调用RequestHandler._exexute()方法，在_execute中会执行具体的处理请求的业务方法。最后调用RequestHandler.flush() 通过iostream发送数据到客户端，一次请求就完成了。
+HTTPConnection在_on_request_body方法中调用到了Application的`__call__`方法，`__call__`方法中会匹配url，并调用RequestHandler._exexute()方法，在_execute中会执行具体的处理请求的业务方法。最后调用RequestHandler.flush() 通过iostream发送数据到客户端，一次请求就完成了。
 
 ```python
 def __call__(self, request):

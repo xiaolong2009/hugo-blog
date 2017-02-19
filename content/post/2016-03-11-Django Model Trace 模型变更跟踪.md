@@ -122,9 +122,3 @@ def ready(self):
 
 AppConfig.ready = ready
 ```
-
-### 源码
-
-以上代码均已提交至github，仅供参考。
-
-> <https://github.com/zhu327/model_trace>

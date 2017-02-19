@@ -5,6 +5,8 @@ tags: ["http"]
 ---
 > 因为http是无状态的协议，所以就需要有一套机制来保持用户的状态，比如用户的登录状态。这个机制其实就是借助cookie和session来完成的  
 
+
+<!--more-->
 # cookie
 Cookie用于存储http请求中的用户认证信息，用户在通过登录认证后，服务器在response header中设置Cookie，用户浏览器自动带Cookie访问该网站
 通过在response 的header中添加set-cookie的信息来设置cookie，response中用set-cookie设置了cookie，那下次的request的header中就会带着这个cookie进行请求。cookie是一组key，value值。
